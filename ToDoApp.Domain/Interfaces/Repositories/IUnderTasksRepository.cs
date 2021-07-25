@@ -6,15 +6,9 @@ using System.Threading.Tasks;
 
 namespace ToDoApp.Domain
 {
-    public interface IUnderTasksRepository
+    public interface IUnderTasksRepository : IRepository<UnderTask>
     {
-        public bool Add(UnderTask underTask);
-
-        public bool Delete(int id);
-
-        public List<UnderTask> GetAll();
-
-        public void SaveChanges();
+        public IEnumerable<UnderTask> GetAllUnderTasks();
 
     }
 }

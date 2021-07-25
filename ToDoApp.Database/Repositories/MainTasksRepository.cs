@@ -17,11 +17,9 @@ namespace ToDoApp.Database
 
         }
 
-        public bool Add(MainTask mainTask)
+        public IEnumerable<MainTask> GetAllMainTasks()
         {
-            DbSet.Add(mainTask);
-
-            return SaveChanges();
+            return DbSet.Select(x => x);
         }
     }
 }

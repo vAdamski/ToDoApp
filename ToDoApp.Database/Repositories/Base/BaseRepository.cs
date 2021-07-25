@@ -33,13 +33,25 @@ namespace ToDoApp.Database
             return list;
         }
 
-        public bool Delete(int id)
+        public bool Add(Entity entity)
         {
-            var entityToDelete = DbSet.Find(id);
-
-            DbSet.Remove(entityToDelete);
+            DbSet.Add(entity);
 
             return SaveChanges();
+        }
+
+        public bool Delete(Entity entity)
+        {
+            var entityToDelete = DbSet.FirstOrDefault(x => x.Id == entity.Id);
+
+            if(entityToDelete != null)
+            {
+                DbSet.Remove(entityToDelete);
+
+                return SaveChanges();
+            }
+
+            return false;
         }
 
         public bool SaveChanges()

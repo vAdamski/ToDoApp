@@ -16,5 +16,10 @@ namespace ToDoApp.Database.Repositories
         {
 
         }
+
+        public IEnumerable<UnderTask> GetAllUnderTasks()
+        {
+            return DbSet.Select(x => x);
+        }
     }
 }

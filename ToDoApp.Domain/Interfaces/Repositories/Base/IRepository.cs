@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ToDoApp.Domain
 {
-    public interface IMainTasksRepository : IRepository<MainTask>
+    public interface IRepository<Entity> where Entity : BaseEntity
     {
-        public IEnumerable<MainTask> GetAllMainTasks();
+        bool Add(Entity entity);
+        bool Delete(Entity entity);
     }
 }
