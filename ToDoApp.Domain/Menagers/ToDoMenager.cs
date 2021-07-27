@@ -23,9 +23,9 @@ namespace ToDoApp.Domain
 
         public List<MainTaskDto> GetAllMainTasks()
         {
-            var mainTasksEntities = _mainTasksRepository.GetAllMainTasks().ToList();
+            var mainTaskEntities = _mainTasksRepository.GetAllMainTasks().ToList();
 
-            return _dtoMapper.Map(mainTasksEntities);
+            return _dtoMapper.Map(mainTaskEntities);
         }
 
         public List<UnderTaskDto> GetAllUnderTasksForAMainTask(int mainTaskId)
@@ -33,6 +33,18 @@ namespace ToDoApp.Domain
             var underTaskEntities = _underTasksRepository.GetAllUnderTasks().Where(x => x.MainTaskId == mainTaskId).ToList();
 
             return _dtoMapper.Map(underTaskEntities);
+        }
+
+        public List<MainTaskDto> GetAllMainTasksWithUnderTasks()
+        {
+            var mainTaskEnities = _mainTasksRepository.GetAllMainTasks().ToList();
+
+            foreach(var mainTaskEntity in mainTaskEnities)
+            {
+                mainTaskEntity.UnderTasks = _underTasksRepository.GetAllUnderTasksForMainTask(mainTaskEntity).ToList();
+            }
+
+            return _dtoMapper.Map(mainTaskEnities);
         }
 
         public bool AddNewUnderTask(UnderTaskDto underTaskDto, int mainTaskId)

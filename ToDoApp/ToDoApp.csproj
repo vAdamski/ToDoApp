@@ -30,8 +30,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\Models\MainTask.ts" />
+    <None Remove="ClientApp\src\app\Models\UnderTask.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ToDoApp.Database\ToDoApp.Database.csproj" />
     <ProjectReference Include="..\ToDoApp.Domain\ToDoApp.Domain.csproj" />
+    <ProjectReference Include="..\ToDoApp.Mapper\ToDoApp.Mapper.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\Models\MainTask.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Models\UnderTask.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

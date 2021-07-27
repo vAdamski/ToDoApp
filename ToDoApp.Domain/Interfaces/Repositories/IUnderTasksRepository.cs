@@ -10,5 +10,7 @@ namespace ToDoApp.Domain
     {
         public IEnumerable<UnderTask> GetAllUnderTasks();
 
+        public IEnumerable<UnderTask> GetAllUnderTasksForMainTask(MainTask mainTask);
+
     }
 }

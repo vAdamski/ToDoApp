@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ToDoApp.Domain;
 
-namespace ToDoApp.Database.Repositories
+namespace ToDoApp.Database
 {
     public class UnderTasksRepository : BaseRepository<UnderTask>, IUnderTasksRepository
     {
@@ -20,6 +20,11 @@ namespace ToDoApp.Database.Repositories
         public IEnumerable<UnderTask> GetAllUnderTasks()
         {
             return DbSet.Select(x => x);
+        }
+
+        public IEnumerable<UnderTask> GetAllUnderTasksForMainTask(MainTask mainTask)
+        {
+            return DbSet.Where(x => x.MainTaskId == mainTask.Id);
         }
     }
 }

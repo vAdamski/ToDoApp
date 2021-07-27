@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using ToDoApp.Database;
+using ToDoApp.Domain;
+using ToDoApp.Mapper;
 
 namespace ToDoApp
 {
@@ -32,6 +34,12 @@ namespace ToDoApp
 
             var connectionString = Configuration.GetConnectionString("Default");
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
+
+            services.AddTransient<IToDoMenager, ToDoMenager>();
+            services.AddTransient<IDtoMapper, DtoMapper>();
+            services.AddTransient<IViewModelMapper, ViewModelMapper>();
+            services.AddTransient<IMainTasksRepository, MainTasksRepository>();
+            services.AddTransient<IUnderTasksRepository, UnderTasksRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
