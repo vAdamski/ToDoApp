@@ -9,17 +9,18 @@ import { error } from 'selenium-webdriver';
 })
 export class TodoComponent implements OnInit {
 
-  tasks: Array<MainTask>;
+  mainTasks: Array<MainTask>;
   backendResponse: string;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.getAllTasks();
   }
 
   getAllTasks() {
     this.http.get<Array<MainTask>>("https://localhost:44343/" + "ToDoApp/" + "getAllTasks").subscribe(response => {
-      this.tasks = response;
+      this.mainTasks = response;
     },
       error => {
         console.log(error);

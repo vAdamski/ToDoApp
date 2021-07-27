@@ -1,2 +1,15 @@
-<p>todo works!</p>
-<button (click)="getAllTasks()">Click me!</button>
+<div>
+  <p>ToDo Application</p>
+  <div>
+    <ol>
+      <li *ngFor="let mainTask of mainTasks">
+        {{mainTask.Title}}
+        <ul>
+          <li *ngFor="let underTask of mainTask.UnderTasks">
+            {{underTask.Title}}
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+</div>
