@@ -3,10 +3,10 @@
   <div>
     <ol>
       <li *ngFor="let mainTask of mainTasks">
-        {{mainTask.Title}}
+        {{mainTask.title}}
         <ul>
-          <li *ngFor="let underTask of mainTask.UnderTasks">
-            {{underTask.Title}}
+          <li *ngFor="let underTask of mainTask.underTasks">
+            {{underTask.title}}
           </li>
         </ul>
       </li>

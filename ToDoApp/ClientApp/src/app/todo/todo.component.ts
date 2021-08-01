@@ -20,6 +20,7 @@ export class TodoComponent implements OnInit {
 
   getAllTasks() {
     this.http.get<Array<MainTask>>("https://localhost:44343/" + "ToDoApp/" + "getAllTasks").subscribe(response => {
+      console.log(response);
       this.mainTasks = response;
     },
       error => {
