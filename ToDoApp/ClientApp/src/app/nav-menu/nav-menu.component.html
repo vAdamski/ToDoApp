@@ -28,6 +28,15 @@
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/todo']">ToDoApp</a>
           </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/login']">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark">{{firstName}} {{lastName}}</a>
+          </li>
+          <li class="nav-item">
+            <button (click)="logOutUser()">Log Out</button>
+          </li>
         </ul>
       </div>
     </div>

@@ -30,8 +30,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\Models\LoggedInUser.ts" />
     <None Remove="ClientApp\src\app\Models\MainTask.ts" />
     <None Remove="ClientApp\src\app\Models\UnderTask.ts" />
+    <None Remove="ClientApp\src\app\Models\UserLogin.ts" />
+    <None Remove="ClientApp\src\app\Models\UserRegister.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,6 +45,9 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\Models\MainTask.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Models\UserLogin.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Models\LoggedInUser.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Models\UserRegister.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Models\UnderTask.ts" />
   </ItemGroup>
 

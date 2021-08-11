@@ -20,21 +20,30 @@ namespace ToDoApp.Domain
             _underTasksRepository = underTasksRepository;
             _dtoMapper = dtoMapper;
         }
+        
+        public List<MainTaskDto> GetAllTasksForUser(ApplicationUser applicationUser)
+        {
+            var mainTaskEntitiesForUser = _mainTasksRepository.GetAllMainTasks().Where(x => x.UserId == applicationUser.Id).ToList();
 
+            foreach (var mainTaskEntity in mainTaskEntitiesForUser)
+            {
+                mainTaskEntity.UnderTasks = _underTasksRepository.GetAllUnderTasksForMainTask(mainTaskEntity).ToList();
+            }
+
+            return _dtoMapper.Map(mainTaskEntitiesForUser);
+        }
         public List<MainTaskDto> GetAllMainTasks()
         {
             var mainTaskEntities = _mainTasksRepository.GetAllMainTasks().ToList();
 
             return _dtoMapper.Map(mainTaskEntities);
         }
-
         public List<UnderTaskDto> GetAllUnderTasksForAMainTask(int mainTaskId)
         {
             var underTaskEntities = _underTasksRepository.GetAllUnderTasks().Where(x => x.MainTaskId == mainTaskId).ToList();
 
             return _dtoMapper.Map(underTaskEntities);
         }
-
         public List<MainTaskDto> GetAllMainTasksWithUnderTasks()
         {
             var mainTaskEnities = _mainTasksRepository.GetAllMainTasks().ToList();
@@ -46,7 +55,6 @@ namespace ToDoApp.Domain
 
             return _dtoMapper.Map(mainTaskEnities);
         }
-
         public bool AddNewUnderTask(UnderTaskDto underTaskDto, int mainTaskId)
         {
             var entity = _dtoMapper.Map(underTaskDto);
@@ -55,21 +63,26 @@ namespace ToDoApp.Domain
 
             return _underTasksRepository.Add(entity);
         }
-
         public bool AddNewMainTask(MainTaskDto mainTaskDto)
         {
             var entity = _dtoMapper.Map(mainTaskDto);
 
             return _mainTasksRepository.Add(entity);
         }
+        public bool AddNewMainTaskForUser(MainTaskDto mainTaskDto, ApplicationUser applicationUser)
+        {
+            mainTaskDto.UserId = applicationUser.Id;
 
+            var entity = _dtoMapper.Map(mainTaskDto);
+
+            return _mainTasksRepository.Add(entity);
+        }
         public bool DeleteUnderTask(UnderTaskDto underTaskDto)
         {
             var entity = _dtoMapper.Map(underTaskDto);
 
             return _underTasksRepository.Delete(entity);
         }
-
         public bool DeleteMainTask(MainTaskDto mainTaskDto)
         {
             var entity = _dtoMapper.Map(mainTaskDto);

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { error } from 'selenium-webdriver';
+import { MainTask } from '../Models/MainTask';
 
 @Component({
   selector: 'app-todo',
@@ -15,17 +16,29 @@ export class TodoComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.getAllTasks();
+    this.getAllTasksForLoggeInUser();
   }
 
   getAllTasks() {
     this.http.get<Array<MainTask>>("https://localhost:44343/" + "ToDoApp/" + "getAllTasks").subscribe(response => {
-      console.log(response);
       this.mainTasks = response;
     },
       error => {
         console.log(error);
       });
+  }
+
+  getAllTasksForLoggeInUser() {
+    this.http.get<Array<MainTask>>("https://localhost:44343/" + "ToDoApp/" + "getAllTasksForLoggedInUser").subscribe(response => {
+      this.mainTasks = response;
+    },
+      error => {
+        console.log(error);
+      });
+  }
+
+  alertInfo(number) {
+    alert("Click button with number " + number);
   }
 
 }

@@ -33,7 +33,7 @@ namespace ToDoApp
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
             var connectionString = Configuration.GetConnectionString("Default");
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));

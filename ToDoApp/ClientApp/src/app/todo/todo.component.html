@@ -1,15 +1,25 @@
-<div>
-  <p>ToDo Application</p>
-  <div>
-    <ol>
-      <li *ngFor="let mainTask of mainTasks">
-        {{mainTask.title}}
-        <ul>
-          <li *ngFor="let underTask of mainTask.underTasks">
-            {{underTask.title}}
-          </li>
-        </ul>
-      </li>
-    </ol>
-  </div>
-</div>
+<main id="container">
+  <header id="topBarList">
+    <div id="topBarTitle">Title main task</div>
+    <div id="topBarDeadline">Deadline</div>
+    <div id="topBarIsDone">Is done</div>
+    <div id="topBarPriority">Priority</div>
+    <div style="float: none"></div>
+  </header>
+  <section id="mainSection">
+    <article class="mainTask" *ngFor="let mainTask of mainTasks">
+      <div class="mainTaskInfo">
+        <div class="mainTaskTitle">{{mainTask.title}}</div>
+        <div class="mianTaskDeadline">{{mainTask.deadline}}</div>
+        <div class="mianTaskIsDone">{{mainTask.isDone}}</div>
+        <div class="mianTaskPriority">High</div>
+      </div>
+      <section class="underTasksContainer">
+        <section class="underTask" *ngFor="let underTask of mainTask.underTasks">
+          <div class="underTaskTitle"></div>
+          <div class="underTaskIsDone"></div>
+        </section>
+      </section>
+    </article>
+  </section>
+</main>

@@ -17,6 +17,8 @@ namespace ToDoApp.Mapper
             {
                 config.CreateMap<MainTaskDto, MainTaskViewModel>().ReverseMap();
                 config.CreateMap<UnderTaskDto, UnderTaskViewModel>().ReverseMap();
+                config.CreateMap<UserRegisterDto, UserRegisterViewModel>().ReverseMap();
+                config.CreateMap<UserLoginDto, UserLoginViewModel>().ReverseMap();
             }).CreateMapper();
         }
 
@@ -46,6 +48,22 @@ namespace ToDoApp.Mapper
 
         public List<MainTaskDto> Map(List<MainTaskViewModel> mainTaskViewModels)
             => _mapper.Map<List<MainTaskDto>>(mainTaskViewModels);
+        #endregion
+
+        #region UserRegister Maps
+        public UserRegisterViewModel Map(UserRegisterDto userRegisterDto)
+            => _mapper.Map<UserRegisterViewModel>(userRegisterDto);
+
+        public UserRegisterDto Map(UserRegisterViewModel userRegisterViewModel)
+            => _mapper.Map<UserRegisterDto>(userRegisterViewModel);
+        #endregion
+
+        #region UserLogin Maps
+        public UserLoginViewModel Map(UserLoginDto userLoginDto)
+            => _mapper.Map<UserLoginViewModel>(userLoginDto);
+
+        public UserLoginDto Map(UserLoginViewModel userLoginViewModel)
+            => _mapper.Map<UserLoginDto>(userLoginViewModel);
         #endregion
     }
 }

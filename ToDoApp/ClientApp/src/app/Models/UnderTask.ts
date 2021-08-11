@@ -1,4 +1,4 @@
-class UnderTask {
+export class UnderTask {
   Id: number;
   Title: string;
   Description: string;

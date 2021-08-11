@@ -1,0 +1,24 @@
+#container {
+  margin-left: auto;
+  margin-left: auto;
+}
+
+#topBarList {
+  height: 40px;
+}
+
+#topBarTitle {
+  float: left;
+}
+
+topBarDeadline {
+  float: left;
+}
+
+topBarIsDone {
+  float: left;
+}
+
+topBarPriority {
+  float: left;
+}
