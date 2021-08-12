@@ -1,25 +1,20 @@
-<main id="container">
-  <header id="topBarList">
-    <div id="topBarTitle">Title main task</div>
-    <div id="topBarDeadline">Deadline</div>
-    <div id="topBarIsDone">Is done</div>
-    <div id="topBarPriority">Priority</div>
-    <div style="float: none"></div>
-  </header>
-  <section id="mainSection">
-    <article class="mainTask" *ngFor="let mainTask of mainTasks">
-      <div class="mainTaskInfo">
-        <div class="mainTaskTitle">{{mainTask.title}}</div>
-        <div class="mianTaskDeadline">{{mainTask.deadline}}</div>
-        <div class="mianTaskIsDone">{{mainTask.isDone}}</div>
-        <div class="mianTaskPriority">High</div>
-      </div>
-      <section class="underTasksContainer">
-        <section class="underTask" *ngFor="let underTask of mainTask.underTasks">
-          <div class="underTaskTitle"></div>
-          <div class="underTaskIsDone"></div>
-        </section>
-      </section>
-    </article>
-  </section>
-</main>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Is Done</th>
+      <th scope="col">Deadline</th>
+      <th scope="col">Edit Task</th>
+      <th scope="col">Delete Task</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let mainTask of mainTasks">
+      <th>{{mainTask.title}}</th>
+      <th>{{mainTask.isDone}}</th>
+      <th>{{mainTask.deadline}}</th>
+      <th><button (click)="editTask(mainTask.id)" type="button" class="btn btn-outline-info">Edit</button></th>
+      <th><button (click)="deleteTask(mainTask.id)" type="button" class="btn btn-outline-danger">Delete</button></th>
+    </tr>
+  </tbody>
+</table>
